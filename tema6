@@ -1,0 +1,12 @@
+---
+  - name: Shell
+    hosts: localhost
+    tasks:
+
+    - name: Execute tema modul 1 with Shell command
+      shell:
+         "./tema1"
+      register: tema1cmd
+      tags: tema1cmd
+
+    - debug: msg="{{tema1cmd.stdout}}"

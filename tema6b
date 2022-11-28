@@ -1,0 +1,30 @@
+---
+  - name: User
+    hosts: localhost
+    become: yes
+    tasks:
+
+    - name: Add the user 'devops-ansible' with a specific uid and a primary group of 'sudo'
+      ansible.builtin.user:
+        name: devops-ansible
+        comment: Devops-Ansible
+        uid: 1077
+        group: sudo
+    
+    - name: Create a directory 'devops' inside the new user's home
+      ansible.builtin.file:
+        path: /home/devops-ansible/devops
+        state: directory
+      
+    - name: Create a directory 'ansible' inside the new user's home
+      ansible.builtin.file:
+        path: /home/devops-ansible/ansible
+        state: directory            
+        
+    - name: Install the latest version of wget, curl, htop
+      ansible.builtin.package:
+        name:
+          - wget
+          - curl
+          - htop
+        state: latest    
