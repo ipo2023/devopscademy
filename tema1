@@ -3,3 +3,4 @@ echo $USER
 pwd
 ls -l
 echo $(date)
+free -th
